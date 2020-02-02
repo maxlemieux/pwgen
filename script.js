@@ -36,6 +36,10 @@ function generatePassword() {
     confirm('Use numbers in the password?'),
     confirm('Use special characters in the password?'),
   ]
+  if (choicesArr === [false, false, false, false]) {
+    alert("You didn't pick any characters to use in the password - using all of them instead.");
+    choicesArr = [true, true, true, true];
+  }
   console.log(choicesArr);
 
   // Populate the possible characters to choose from for the password
