@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
 
+// Get password length - check to make sure the length entered is a number between 8 and 128 inclusive
 function getPwLength() {
   var lengthIsSet = false;
   while (lengthIsSet === false) {
@@ -36,6 +37,8 @@ function generatePassword() {
     confirm('Use numbers in the password?'),
     confirm('Use special characters in the password?'),
   ]
+
+  // Validate input for character set choices - don't let the user build an empty password
   console.log("Raw input of choicesArr: " + choicesArr);
   if (choicesArr.join() === "false,false,false,false") {
     alert("You didn't pick any characters to use in the password - defaulting to a strong password.");
