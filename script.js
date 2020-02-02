@@ -36,11 +36,12 @@ function generatePassword() {
     confirm('Use numbers in the password?'),
     confirm('Use special characters in the password?'),
   ]
-  if (choicesArr === [false, false, false, false]) {
-    alert("You didn't pick any characters to use in the password - using all of them instead.");
+  console.log("Raw input of choicesArr: " + choicesArr);
+  if (choicesArr.join() === "false,false,false,false") {
+    alert("You didn't pick any characters to use in the password - defaulting to a strong password.");
     choicesArr = [true, true, true, true];
   }
-  console.log(choicesArr);
+  console.log("Sanitized version of choicesArr: " + choicesArr);
 
   // Populate the possible characters to choose from for the password
   for (var i=0; i < charsArr.length; i++) {
