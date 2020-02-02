@@ -16,7 +16,7 @@ function getPwLength() {
   return pwLength;
 }
 
-// Get all the information from the user and the possible sets of characters
+// Get all the information from the user and define the possible sets of characters
 function generatePassword() {
   var password = ''
   var possibleChars = []
@@ -30,7 +30,6 @@ function generatePassword() {
   
   // Get choices from the user
   var pwLength = getPwLength();
-
   var choicesArr = [
     confirm('Use lowercase letters in the password?'),
     confirm('Use uppercase letters in the password?'),
@@ -43,18 +42,22 @@ function generatePassword() {
   for (var i=0; i < charsArr.length; i++) {
     console.log("Choices array: " + choicesArr[i]);
     if (choicesArr[i]) {
-      possibleChars.push(charsArr[i]);
+      // Add every character of the selected set to the possible characters
+      for (thisChar of charsArr[i]) {
+        possibleChars.push(thisChar);
+      }
+      //possibleChars.push(charsArr[i]);
       console.log("New state of possibleChars: " + possibleChars);
-    } else {
-      // this should never happen
-      console.log("Couldn't handle choice: " + choicesArr[i]);
     }
   }
   
+  // Select characters randomly from possibleChars array and add them to the password
   for (var i=1; i <= pwLength; i++) {
     nextChar = possibleChars[Math.floor(Math.random() * possibleChars.length)];
     password = password + nextChar;
   }
+
+  // Return a password
   return password;
 }
 
